@@ -13,14 +13,3 @@ body {
 .canvas-wrapper canvas.marker-layer {
   pointer-events: none;
 }
-
-.canvas-eraser-marker {
-  display: none;
-  position: absolute;
-  border-style: dashed;
-  border-color: #888;
-  border-radius: 50%;
-  border-width: 2px;
-  background-color: transparent;
-  box-sizing: border-box;
-}
