@@ -1,18 +1,25 @@
 {
-  "name": "inkcanvas",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "html5-inkcanvas",
+  "version": "0.0.1",
+  "description": "Inking demo using HTML5 canvas element and pointer event",
+  "main": "index.ts",
   "scripts": {
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "canvas",
+    "pointerevent"
+  ],
+  "author": "yuntan",
+  "license": "MIT",
   "devDependencies": {
     "ts-loader": "^0.9.5",
     "typescript": "^2.0.3",
     "webpack": "^1.13.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yuntan/html5-inkcanvas"
   }
 }
