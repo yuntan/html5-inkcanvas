@@ -4,10 +4,16 @@
 <head>
 	<meta charset="UTF-8">
 	<title>InkCanvas</title>
+	<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-	<canvas width="512" height="512"></canvas>
+	<div class="canvas-wrapper">
+		<canvas class="draw-layer" width="512" height="512"></canvas>
+		<canvas class="marker-layer" width="512" height="512"></canvas>
+		<div class="canvas-eraser-marker"></div>
+	</div>
+
 
 	<script src="build/bundle.js"></script>
 </body>
