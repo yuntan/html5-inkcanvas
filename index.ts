@@ -13,12 +13,52 @@ const inkLayer = document.querySelector('canvas.ink-layer') as HTMLCanvasElement
 // use canvas instead
 // const eraserMarker = document.querySelector('.canvas-eraser-marker') as HTMLDivElement;
 const markerLayer = document.querySelector('canvas.marker-layer') as HTMLCanvasElement;
+const saveButton = document.querySelector('a.save-button') as HTMLAnchorElement;
 
 window.addEventListener('load', _ev => {
   // adjust canvas size to fit window
   const w = window.innerWidth, h = window.innerHeight;
   inkLayer.width = w; inkLayer.height = h;
   markerLayer.width = w; markerLayer.height = h;
+
+  // fill ink layer
+  const ctx = inkLayer.getContext('2d') !;
+  ctx.fillStyle = '#fff';
+  ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+});
+
+function formatDate(date: Date): string {
+  const YYYY = date.getFullYear();
+  const MM = ('0' + (date.getMonth() + 1)).slice(-2);
+  const DD = ('0' + date.getDate()).slice(-2);
+  const hh = ('0' + date.getHours()).slice(-2);
+  const mm = ('0' + date.getMinutes()).slice(-2);
+  const ss = ('0' + date.getSeconds()).slice(-2);
+  return `${YYYY}-${MM}-${DD} ${hh}-${mm}-${ss}`;
+}
+
+saveButton.addEventListener('click', ev => {
+  ev.preventDefault();
+
+  const defaultName = formatDate(new Date()) + '.png';
+
+  // download PNG
+  // http://kuroeveryday.blogspot.jp/2016/05/file-download-from-browser.html
+  if (window.navigator.msSaveBlob) { // for Microsoft Edge
+    const blob = inkLayer.msToBlob();
+    if (!blob) {
+      console.error("[canvas] failed to create Blob");
+      return;
+    }
+    window.navigator.msSaveBlob(blob, defaultName);
+  } else { // for Google Chrome
+    const dataUrl = inkLayer.toDataURL();
+    const a = document.createElement('a');
+    a.href = dataUrl;
+    a.download = formatDate(new Date()) + '.png';
+    a.type = 'image/png';
+    a.click();
+  }
 });
 
 const eraserButton = 32; // 6th button

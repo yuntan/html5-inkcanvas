@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  position: relative;
 }
 
 .canvas-wrapper {
@@ -12,4 +13,15 @@ body {
 
 .canvas-wrapper canvas.marker-layer {
   pointer-events: none;
+}
+
+a.save-button {
+  position: absolute;
+  top: 6px; right: 6px;
+  color: darkorange;
+  text-decoration: none;
+}
+
+a.save-button:hover {
+  text-decoration: underline;
 }
